@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
-import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -9,46 +10,59 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleInstallExtension = () => {
-    // Redirect to the search page
     navigate("/search");
   };
+  
+
   return (
     <div>
       <Header />
 
-      <div className="login-container">
-        <div className="left-side">
+      <div
+        initial="hidden"
+        animate="visible"
+        className="flex h-screen bg-gradient-to-r from-linkedin-blue-1 to-linkedin-blue-2"
+      >
+        <div className="hidden md:flex md:w-1/3">
           <img
             src="/LinkedIn surfer 88003b3a-ce03-4ccf-816d-2027c07a1544.png"
             alt="Left Side Image"
-            className="left-side-image"
+            className="object-cover w-full h-full"
           />
         </div>
 
-        <div className="right-side">
-          <h2 className="login-heading">LinkedIn surfer</h2>
+        <div className="flex-grow flex flex-col items-center justify-center p-8 bg-blue-500  shadow-lg">
+          <h2 className="text-4xl font-extrabold text-white mb-4">
+            LinkedIn Surfer
+          </h2>
 
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Linkedin.svg"
             alt="LinkedIn Logo"
-            className="linkedin-logo"
+            className="w-20 h-20 mb-4"
           />
-          <p className="login-description">
-            Surf up to 2000 companies a day for free! <br />
-            Get 10 emails a day for free
+          <p className="text-center text-white">
+            Supercharge your networking experience! <br />
+            Surf up to 2000 companies a day for free,
             <br />
-            Connect to 5 people a day for free
+            get 10 emails a day for free,
+            <br />
+            and connect to 5 people daily for free.
           </p>
-          <button type="submit" className="login-button"
-                      onClick={handleInstallExtension}
-                      >
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="bg-gradient-to-r from-linkedin-blue-1 to-linkedin-blue-2 text-white py-2 px-6 mt-6 rounded-full focus:outline-none focus:ring focus:border-linkedin-blue-3 shadow-lg"
+            onClick={handleInstallExtension}
+          >
             Install Extension
-          </button>
+          </motion.button>
         </div>
       </div>
       <Footer />
     </div>
   );
 };
+
 
 export default Login;
