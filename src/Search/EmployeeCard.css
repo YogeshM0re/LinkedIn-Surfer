@@ -1,0 +1,62 @@
+.employee-card {
+     background-color: #fff;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     border-radius: 8px;
+     overflow: hidden;
+     transition: transform 0.3s ease;
+}
+
+.employee-card:hover {
+     transform: scale(1.01);
+     cursor: pointer;
+     box-shadow: 2px 4px 8px #0077b5;
+}
+
+.img-container {
+     overflow: hidden;
+     border-bottom: 1px solid #ddd;
+     width: 25%;
+     height: 50%;
+     object-fit: cover;
+}
+
+.img-container img {
+
+     border-radius: 8px 8px 0 0;
+}
+
+.info-container {
+     padding: 15px;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+}
+
+h3 {
+     margin: 0;
+     font-size: 18px;
+     color: #333;
+}
+
+.button-container {
+     margin-top: 10px;
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+}
+
+button {
+     background-color: #0077b5;
+     display: block;
+     margin-top: 20px;
+     padding: 10px 20px;
+     font-size: 16px;    
+     color: #fff;
+     border: none;
+     cursor: pointer;
+     transition: background-color 0.3s;
+}
+
+button:hover {
+     background-color: #005183;
+}
