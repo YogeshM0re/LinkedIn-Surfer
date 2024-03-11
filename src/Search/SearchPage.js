@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import EmployeeCard from "./EmployeeCard.js";
-import "./SearchPage.css";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Chart from "../Chart/Chart.jsx";
@@ -94,28 +93,28 @@ const SearchPage = () => {
     },
     {
       id: 11,
-      name: "Aaron Johnson",
+      name: "Emma Watson",
       profilePic: "https://randomuser.me/api/portraits/women/19.jpg",
       designation: "Software Engineer",
       location: "Pune, IND",
     },
     {
       id: 12,
-      name: "Aaron Johnson",
+      name: "Michael Jordan",
       profilePic: "https://randomuser.me/api/portraits/women/18.jpg",
       designation: "Software Engineer",
       location: "Pune, IND",
     },
     {
       id: 13,
-      name: "Aaron Johnson",
+      name: "Taylor Swift",
       profilePic: "https://randomuser.me/api/portraits/women/17.jpg",
       designation: "Front-end Developer",
       location: "Pune, IND",
     },
     {
       id: 14,
-      name: "Aaron Johnson",
+      name: "Justin Bieber",
       profilePic: "https://randomuser.me/api/portraits/women/20.jpg",
       designation: "Front-end Developer",
       location: "Pune, IND",
@@ -195,69 +194,96 @@ const SearchPage = () => {
   return (
     <div>
       <Header />
+      <div className="flex items-center justify-center mb-4 p-2 bg-blue-100 sm:flex-row">
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 1}
+          className="py-2 px-4 bg-blue-500 text-white rounded-full mr-2"
+        >
+          Previous
+        </button>
+        <input
+          type="text"
+          className="search-input border-2 border-gray-300 p-2 rounded-md w-full sm:w-64 mx-2 focus:outline-blue-500"
+          placeholder="Search by name or designation..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <span className="page-count mx-2">
+          Page {currentPage} of {totalPageCount}
+        </span>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPageCount}
+          className="py-2 px-4 bg-blue-500 text-white rounded-full ml-2"
+        >
+          Next
+        </button>
+      </div>
+
       <div className="search-page">
-        <div className="controls">
-          <button onClick={handlePrevious} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search by name or designation..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <span className="page-count">
-            Page {currentPage} of {totalPageCount}
-          </span>
-          <button
-            onClick={handleNext}
-            disabled={currentPage === totalPageCount}
-          >
-            Next
-          </button>
-        </div>
-        <div className="content">
-          <div className="company-details-container">
+        <div className="content flex flex-col lg:flex-row">
+          <div className="company-details-container lg:mr-8 lg:w-1/3 p-4">
             <img
               src="https://media.licdn.com/dms/image/C4E0BAQE4_DlFURCeJg/company-logo_200_200/0/1645358686351/acumenengineering_logo?e=1718236800&v=beta&t=EHTQGsXzrBrqpwoctEAA7MZmRdg0GwtzVXX81o_MzOU"
               alt="companyLogo"
               className="company-logo"
             />
-            <h2>{companyDetails.name}</h2>
-            <p>{companyDetails.location}</p>
-            <div className="additional-details">
-              <div className="tabs">
-                <span className="tab">Home</span>
-                <span className="tab">About</span>
-                <span className="tab">Posts</span>
-                <span className="tab">Jobs</span>
+            <h2 className="text-2xl font-bold mb-2">{companyDetails.name}</h2>
+            <p className="text-gray-600">{companyDetails.location}</p>
+            <div className="additional-details mt-4">
+              <div className="tabs flex mb-2">
+                <span className="tab mr-2">Home</span>
+                <span className="tab mr-2">About</span>
+                <span className="tab mr-2">Posts</span>
+                <span className="tab mr-2">Jobs</span>
                 <span className="tab">People</span>
               </div>
-              <p>Industry: {companyDetails.industry}</p>
-              <p>Company size: {companyDetails.size}</p>
-              <p>Headquarters: {companyDetails.headquarters}</p>
-              <p>Overview: {companyDetails.overview}</p>
-              <p className="website">
+              <p className="text-gray-700">
+                Industry: {companyDetails.industry}
+              </p>
+              <p className="text-gray-700">
+                Company size: {companyDetails.size}
+              </p>
+              <p className="text-gray-700">
+                Headquarters: {companyDetails.headquarters}
+              </p>
+              <p className="text-gray-700">
+                Overview: {companyDetails.overview}
+              </p>
+              <p className="text-blue-500 website">
                 Company Website:{" "}
-                <a onClick={handleWebsiteClick}>{companyDetails.website}</a>
+                <a className="cursor-pointer" onClick={handleWebsiteClick}>
+                  {companyDetails.website}
+                </a>
               </p>
             </div>
-            <div className="social-links">
-              <a href="#" target="_blank" rel="noopener noreferrer">
+            <div className="social-links mt-4">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 mr-2"
+              >
                 LinkedIn
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500"
+              >
                 Twitter
               </a>
             </div>
           </div>
 
-          <div className="employee-cards-container">
-            <div className="employee-list-container">
+          <div className="employee-cards-container lg:flex-1">
+            <div className="employee-list-container w-full lg:w-1/2 p-4">
               <Chart />
             </div>
-            <div className="employee-data">
+
+            <div className="employee-data flex flex-wrap  gap-4   ">
               {currentEmployees.map((employee) => (
                 <EmployeeCard key={employee.id} employee={employee} />
               ))}
