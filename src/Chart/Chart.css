@@ -1,0 +1,29 @@
+h2 {
+     text-align: center;
+     color: #333;
+     font-weight: bold;
+}
+
+.chart-next-button {
+     display: block;
+     margin: 20px auto;
+     padding: 10px 20px;
+     font-size: 16px;
+     background-color: #4CAF50;
+     color: #fff;
+     border: none;
+     cursor: pointer;
+     transition: background-color 0.3s;
+
+}
+
+.chart-next-button:hover {
+     background-color: #316834;
+}
+
+canvas {
+     width: 100%;
+     max-width: 600px;
+     margin: 0 auto;
+     border: 1px solid #ddd;
+}
